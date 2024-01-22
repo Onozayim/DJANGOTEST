@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "navbar.html" %}
+
+<header class="py-3 mb-3 border-bottom border-3">
+  <div class="row m-auto" style="width: 99%;">
+    <div class="col-md-10">
+      <h2 class="d-flex align-items-end mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+        {{assig.title}}
+      </h2>
+    </div>
+
+    <div class="col-md-2">
+      <a class="ml-2 col-lg-auto mb-lg-0 btn btn-primary px-5" href="{% url "tasks_create" assig.id%}" style="">
+        Tarea +
+      </a>
+    </div>
+  </div>
+
+</header>
+<div class="row bg-light p-5 m-auto shadow-lg" style="width: 90%">
+{% for task in tasks %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{task.title}}</h5>
+      <p class="card-text">{{task.description}}</p>
+      <a href="" class='btn btn-primary'>Detalles</a>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock content %}1

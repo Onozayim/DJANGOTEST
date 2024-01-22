@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "navbar.html" %}
+<br>
+<div class="row justify-content-center align-items-center m-auto bg-light p-2 rounded-2 shadow-lg" style="width: 98%">
+    <div class="col-md-4">
+        <form action="" method="post" class="my-5 px-4 pt-4 pb-1 w-100 bg-body rounded-5 shadow-lg">
+            <h1 class="m-auto text-center mb-3">REGISTRATE!</h1>
+            <br>
+            {% csrf_token %}
+            {% for field in form %}
+
+            <div class="form-group">
+                {% comment %} <label for="{{field.auto_id}}" class="form-label">{{field.label}}</label> {% endcomment %}
+                {{field}}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                    <li class="text-danger">
+                        {{error}}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary mt-3 w-100">CREAR CUENTA</button>
+            <p class="text-center mt-2">
+                Ya tienes cuenta?
+                <a href="{% url "core_login" %}">
+                    Inicia sesión
+                </a>
+            </p>
+        </form>
+    </div>
+
+    <div class="col-md-8 ml-5 position-relative">
+        <img src="https://wallpapers.com/images/hd/dim-and-empty-classroom-3xibs30r085n6bm8.jpg" alt="background"
+            class="img-fluid w-100 h-100 rounded-2"
+            style="aspect-ratio: 4 / 3; object-fit: fill; filter: brightness(30%); opacity: .9;">
+        <h1 class="position-absolute text-white" style="left: 20%; top: 30%">
+            ADMINISTRA TUS CLASES <br>
+            ORGANIZA TUS TRABAJOS <br>
+            REALIZA NOTAS <br>
+            ANOTA TUS CALIFICACIONES <br>
+            Y MUCHO MAS! <br>
+        </h1>
+    </div>
+
+</div>
+{% endblock content %}

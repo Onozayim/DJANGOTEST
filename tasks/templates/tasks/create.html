@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "navbar.html" %}
+<br>
+<div class="row bg-light p-5 m-auto shadow-lg" style="width: 90%">
+    <form method="post" enctype="multipart/form-data" class="mt-5 w-50 m-auto p-5 rounded-5 bg-body shadow-lg">
+        <h1 class="m-auto text-center mb-3">CREAR TAREA</h1>
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-group">
+            {% if field.label == 'Task exp' %}
+            {{field.label}}
+            {% endif %}
+
+            {{field}}
+
+            <ul class="errorlist">
+                {% for error in field.errors %}
+                <li class="text-danger">
+                    {{error}}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary mt-3 w-100">GUARDAR</button>
+    </form>
+</div>
+{% endblock content %}

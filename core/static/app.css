@@ -1,0 +1,18 @@
+body {
+    font-family: 'Heebo', sans-serif !important;
+}
+
+.custom-card:hover {
+    transform: scale(1.02);
+    z-index: 100000;
+}
+
+.custom-card {
+    transition: transform .5s;
+}
+
+p.one-line {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
